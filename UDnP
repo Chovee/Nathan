@@ -1,0 +1,18 @@
+function UDnR()  {
+  var ss=SpreadsheetApp.getActiveSpreadsheet();
+  var sheet=ss.getSheets()[0];
+  var range=sheet.getRange(2,1,10,8);
+  var values=range.getValues();
+  var newName=0;
+  var imageURL=7;
+  var folder=DriveApp.getFolderById('1Q-STE5xHuYzawmkenCQZlym0qo30in9Q');//  Change folder ID to drive URL
+  for (var i = 0; i < 10; i++) {
+    var fileblob=UrlFetchApp.fetch(values[i][imageURL]).getBlob()
+    var file=folder.createFile(fileblob)
+    file.setName(values[i][newName] + '.jpg')
+      }
+  //var fileblob=URLFetchApp.fetch(values[i][imageURL]).getBlob();
+  //var file=folder.createFile(fileblob);
+//  file.setName(values[i][newName] + '.jpg')
+ // file.setName(values[i][newName] + '_ALT01.jpg')
+}
